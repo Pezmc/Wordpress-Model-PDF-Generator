@@ -1,0 +1,18 @@
+{
+    "name": "pezcuckow/model-pdf-generator",
+    "description": "PDF generating plugin for Wordpress",
+    "license": "proprietary",
+    "require": {
+        "tecnick.com/tcpdf": "~6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
+    },
+    "authors": [
+        {
+            "name": "Pez Cuckow",
+            "email": "email@pezcuckow.com",
+            "homepage": "http://www.pezcuckow.com"
+        }
+    ]
+}
