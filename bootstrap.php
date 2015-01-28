@@ -9,7 +9,7 @@
  * Licence: Copyright Pez Cuckow 2015 
  */
 if (! defined('ABSPATH')) {
-    die('Access denied.');
+		die('Access denied.');
 }
 
 define('MPDF_NAME', 'Model PDF Generator');
@@ -24,17 +24,17 @@ define('MPDF_BASE', dirname(__FILE__));
  */
 function MPDF_requirements_met()
 {
-    global $wp_version;
-    
-    if (version_compare(PHP_VERSION, MPDF_REQUIRED_PHP_VERSION, '<')) {
-        return false;
-    }
-    
-    if (version_compare($wp_version, MPDF_REQUIRED_WP_VERSION, '<')) {
-        return false;
-    }
-    
-    return true;
+		global $wp_version;
+		
+		if (version_compare(PHP_VERSION, MPDF_REQUIRED_PHP_VERSION, '<')) {
+				return false;
+		}
+		
+		if (version_compare($wp_version, MPDF_REQUIRED_WP_VERSION, '<')) {
+				return false;
+		}
+		
+		return true;
 }
 
 /**
@@ -42,9 +42,9 @@ function MPDF_requirements_met()
  */
 function MPDF_requirements_error()
 {
-    global $wp_version;
-    
-    require_once (MPDF_BASE . '/views/requirements-error.php');
+		global $wp_version;
+		
+		require_once (MPDF_BASE . '/views/requirements-error.php');
 }
 
 
@@ -52,14 +52,14 @@ function MPDF_requirements_error()
  * Check requirements and load main class
  */
 if (MPDF_requirements_met()) {
-    require_once (MPDF_BASE . '/classes/ModelPDFPlugin.php');
-    
-    if (class_exists('ModelPDFPlugin')) {
-        register_activation_hook(__FILE__, array('ModelPDFPlugin', 'activate'));
-        register_deactivation_hook(__FILE__, array('ModelPDFPlugin', 'deactivate'));
+		require_once (MPDF_BASE . '/classes/ModelPDFPlugin.php');
+		
+		if (class_exists('ModelPDFPlugin')) {
+				register_activation_hook(__FILE__, array('ModelPDFPlugin', 'activate'));
+				register_deactivation_hook(__FILE__, array('ModelPDFPlugin', 'deactivate'));
 
-        add_action('init', array('ModelPDFPlugin', 'init'));
-    }
+				add_action('init', array('ModelPDFPlugin', 'init'));
+		}
 } else {
-    add_action('admin_notices', 'MPDF_requirements_error');
+		add_action('admin_notices', 'MPDF_requirements_error');
 }

@@ -7,11 +7,11 @@
  * @copyright 2015 Pez Cuckow
  */
 class MaverickPDF extends ModelPDF {
-    
-    const SplitGrid = 'SplitGrid';
-    const SideBySide = 'SideBySide';
-    const Grid = 'Grid';
-    
+
+	const SplitGrid = 'SplitGrid';
+	const SideBySide = 'SideBySide';
+	const Grid = 'Grid';
+
 	public function __construct($modelName, $modelDetails, $pdfStyle) {
 		parent::__construct(false);
 		$this->pdf->SetCreator('Model PDF');
@@ -27,28 +27,28 @@ class MaverickPDF extends ModelPDF {
 		$this->modelDetails = $modelDetails;
 		
 		if($pdfStyle == self::SplitGrid) {
-		    $this->splitGrid(2, 2);
+				$this->splitGrid(2, 2);
 		} elseif($pdfStyle == self::SideBySide) {
-		    $this->grid(2, 1);
+				$this->grid(2, 1);
 		} elseif($pdfStyle == self::Grid) {
-		    $this->grid(4, 2);
+				$this->grid(4, 2);
 		} else {
-		    throw new InvalidArgumentException('Unknown PDF style');
+				throw new InvalidArgumentException('Unknown PDF style');
 		}
 	}
 	
 	public function splitGrid($x, $y) {
-	    $this->imagesInX = $x;
-	    $this->imagesInY = $y;
-	    
-	    $this->grid = $this->getGrid('SplitGrid');
+			$this->imagesInX = $x;
+			$this->imagesInY = $y;
+			
+			$this->grid = $this->getGrid('SplitGrid');
 	}
 	
 	public function grid($x, $y) {
-	    $this->imagesInX = $x;
-	    $this->imagesInY = $y;
-	    
-	    $this->grid = $this->getGrid('GridLayout');
+			$this->imagesInX = $x;
+			$this->imagesInY = $y;
+			
+			$this->grid = $this->getGrid('GridLayout');
 	}
 }
 

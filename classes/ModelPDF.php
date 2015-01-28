@@ -5,7 +5,7 @@
  * Takes an array of images and draws them on a page PDF with a footer, using a GridLayout for positioning.
  * 
  * @author pezcuckow
- * @copyright  2015 Pez Cuckow
+ * @copyright 2015 Pez Cuckow
  */
 abstract class ModelPDF {
 	
@@ -33,7 +33,7 @@ abstract class ModelPDF {
 	}
 	
 	protected function getGrid($type) {
-	    return new $type($this->imagesInX, $this->imagesInY, $this->pageWidthLessMargins(), $this->pageHeightLessMargins());
+			return new $type($this->imagesInX, $this->imagesInY, $this->pageWidthLessMargins(), $this->pageHeightLessMargins());
 	}
 	
 	public function addImage($imagePath) {
@@ -68,10 +68,10 @@ abstract class ModelPDF {
 	}
 	
 	private function drawImages() {
-	    if(!$this->grid) {
-	        $this->grid = $this->getGrid('SplitGrid');
-	    }
-	    
+		if(!$this->grid) {
+				$this->grid = $this->getGrid('SplitGrid');
+		}
+			
 		foreach($this->imagePaths as $key => $imagePath) {
 			$this->drawImage($key, $imagePath);
 		}

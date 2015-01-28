@@ -22,7 +22,7 @@ class GridLayout {
 		$this->height = $height;
 	}
 	
-	public function X($n) {		
+	public function X($n) {
 		$column = $n % $this->columnsInX;
 		
 		return $column * $this->StepX();
