@@ -50,14 +50,6 @@ class ModelPDFPlugin
 					return $newRule + $rules;
 			});
 			
-			add_filter('page_template', function($pageTemplate) {
-				$pageID = get_option(self::PageID);
-				if($pageID && is_page($pageID)) {
-							$page_template = dirname( __FILE__ ) . '/../views/renderPDF.php';
-					}
-					
-					return $page_template;
-			});
 			
 				global $wp_rewrite;
 				$wp_rewrite->flush_rules( false ); // REMOVE ME
@@ -89,6 +81,14 @@ class ModelPDFPlugin
 					$existingPage->post_status = 'publish';
 					$pageID = wp_update_post( $existingPage );
 				}
+		add_filter('page_template', function($pageTemplate) {
+			$pageID = get_option(self::PageID);
+			if($pageID && is_page($pageID)) {
+				$page_template = dirname( __FILE__ ) . '/../views/renderPDF.php';
+			}
+
+			return $page_template;
+		});
 			}
 			
 			delete_option(self::PageID);
