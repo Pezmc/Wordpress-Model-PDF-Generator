@@ -118,9 +118,12 @@ class ModelPDFPlugin
 		require_once (MPDF_BASE . '/vendor/autoload.php');
 
 		require_once (MPDF_BASE . '/classes/ModelPDF.php');
-		require_once (MPDF_BASE . '/classes/MaverickPDF.php');
 		require_once (MPDF_BASE . '/classes/GridLayout.php');
 		require_once (MPDF_BASE . '/classes/SplitGrid.php');
+		
+		foreach (glob(MPDF_BASE . '/templates/*.php') as $filename) {
+			include $filename;
+		}
 
 		return true;
 	}

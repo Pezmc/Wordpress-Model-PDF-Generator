@@ -8,10 +8,6 @@
  */
 class MyModelPDF extends ModelPDF {
 
-	const SplitGrid = 'SplitGrid';
-	const SideBySide = 'SideBySide';
-	const Grid = 'Grid';
-
 	public function __construct($modelName, $modelDetails, $pdfStyle) {
 		parent::__construct(false);
 		$this->pdf->SetCreator('Model PDF Generator');
@@ -41,14 +37,14 @@ class MyModelPDF extends ModelPDF {
 			$this->imagesInX = $x;
 			$this->imagesInY = $y;
 			
-			$this->grid = $this->getGrid('SplitGrid');
+			$this->grid = $this->getGrid(self::SplitGrid);
 	}
 	
 	public function grid($x, $y) {
 			$this->imagesInX = $x;
 			$this->imagesInY = $y;
 			
-			$this->grid = $this->getGrid('GridLayout');
+			$this->grid = $this->getGrid(self::GridLayout);
 	}
 }
 

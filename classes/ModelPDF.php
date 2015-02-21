@@ -9,6 +9,11 @@
  */
 abstract class ModelPDF {
 	
+	// Default grid types
+	const SplitGrid = 'SplitGrid';
+	const SideBySide = 'SideBySide';
+	const Grid = 'Grid';
+	
 	protected $pdf;
 	protected $imagePaths = array();
 	protected $imagesInX = 2;
