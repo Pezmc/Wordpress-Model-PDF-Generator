@@ -38,8 +38,7 @@ if($query->have_posts()) {
 			the_row(); 
 			$image = get_sub_field('image');
 			
-			$images[] = get_template_directory_uri() . "/thumb.php?src=$image&h=1480&w=1200"; //adjust the aspect ratio
-
+			$images[] = plugins_url('vendor/timthumb.php?src=$image&h=1480&w=1200', MPDF_BASE) // use timthumb to adjust the aspect ratio
 		}
 		
 		if(get_field('height')) {
