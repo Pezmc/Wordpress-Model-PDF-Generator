@@ -44,7 +44,7 @@ class MyModelPDF extends ModelPDF {
 			$this->imagesInX = $x;
 			$this->imagesInY = $y;
 			
-			$this->grid = $this->getGrid(self::GridLayout);
+			$this->grid = $this->getGrid('GridLayout');
 	}
 }
 
