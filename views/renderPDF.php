@@ -73,17 +73,17 @@ if(empty($images)) {
 	// What format PDF
 	switch($wp_query->query_vars['pdf_style']) {
 			case 'side-by-side':
-					$pdfStyle = MaverickPDF::SideBySide;
+					$pdfStyle = MyModelPDF::SideBySide;
 					break;
 			case 'grid':
-					$pdfStyle = MaverickPDF::Grid;
+					$pdfStyle = MyModelPDF::Grid;
 					break;
 			default:
-					$pdfStyle = MaverickPDF::SplitGrid;
+					$pdfStyle = MyModelPDF::SplitGrid;
 	}
 	
-	// Render away
-	$pdf = new MaverickPDF($modelName, implode(' | ', $modelDetails), $pdfStyle);
+	// Render away - this is where you set your custom template generator
+	$pdf = new MyModelPDF($modelName, implode(' | ', $modelDetails), $pdfStyle);
 	$pdf->addImages($images);
 	$pdf->output(__DIR__ . '/output.pdf', 'I');
 }

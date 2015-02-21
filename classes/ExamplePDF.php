@@ -1,12 +1,12 @@
 <?php
 
 /**
- * An extension to the PDF generating class that sets defaults for use on maverickmodels.co.uk
+ * An extension to the PDF generating class that sets defaults for an example "my models
  * 
  * @author pezcuckow
  * @copyright 2015 Pez Cuckow
  */
-class MaverickPDF extends ModelPDF {
+class MyModelPDF extends ModelPDF {
 
 	const SplitGrid = 'SplitGrid';
 	const SideBySide = 'SideBySide';
@@ -14,14 +14,14 @@ class MaverickPDF extends ModelPDF {
 
 	public function __construct($modelName, $modelDetails, $pdfStyle) {
 		parent::__construct(false);
-		$this->pdf->SetCreator('Model PDF');
-		$this->pdf->SetAuthor('Maverick Models');
-		$this->pdf->SetTitle($modelName . ' - Maverick Model');
-		$this->pdf->SetSubject('Maverick Models');
-		$this->pdf->SetKeywords('Maverick Models');
+		$this->pdf->SetCreator('Model PDF Generator');
+		$this->pdf->SetAuthor('My Models');
+		$this->pdf->SetTitle($modelName . ' - My Models');
+		$this->pdf->SetSubject('My Models');
+		$this->pdf->SetKeywords('My Models');
 		
-		$this->footerImage = dirname(__FILE__) . '/../images/maverick.png';
-		$this->footerAddress = "12-14 LEVER STREET, MANCHESTER, M1 1LN 	 Tel: 0161 236 2874";
+		$this->footerImage = dirname(__FILE__) . '/../images/mymodels.png';
+		$this->footerAddress = "123 MODEL STREET, London, N1 123 	 Tel: 020 7946 0103";
 		
 		$this->modelName = $modelName;
 		$this->modelDetails = $modelDetails;
