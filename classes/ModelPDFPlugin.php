@@ -53,10 +53,10 @@ class ModelPDFPlugin
 		add_filter('page_template', function($pageTemplate) {
 			$pageID = get_option(self::PageID);
 			if($pageID && is_page($pageID)) {
-				$page_template = dirname( __FILE__ ) . '/../views/renderPDF.php';
+				$pageTemplate = dirname( __FILE__ ) . '/../views/renderPDF.php';
 			}
 
-			return $page_template;
+			return $pageTemplate;
 		});
 	}
 
