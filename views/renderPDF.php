@@ -1,12 +1,17 @@
 <?php
 
+/**
+ * Customise this file to get an array of images and pass it to the PDF generator
+ * The code here is just an example and shows grabbing model information from a wordpress post
+ */
+ 
+// Handy functions
 function cmInFeetAndInches($cm) {
 	$inches = ceil($cm / 2.54);
 	$feet = floor($inches / 12);
 
 	return $feet."'".($inches % 12).'"';
 }
-
 
 function printError($message) {
 	get_header();
@@ -19,11 +24,12 @@ function printError($message) {
 	get_footer();
 }
 
+// Information to pass to the PDF generator
 $images = array();
 $modelName = "";
 $modelDetails = array();
 
-// Collect information about our model
+// Collect information about our model by searching for a post with this ID
 $query = new WP_Query(array(
 	'post_type' => 'models',
 	'models' => $wp_query->query_vars['model_id'],
