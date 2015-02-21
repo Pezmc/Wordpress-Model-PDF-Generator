@@ -1,20 +1,20 @@
 <?php
 
 function cmInFeetAndInches($cm) {
-		$inches = ceil($cm / 2.54);
-		$feet = floor($inches / 12);
+	$inches = ceil($cm / 2.54);
+	$feet = floor($inches / 12);
 
-		return $feet."'".($inches % 12).'"';
+	return $feet."'".($inches % 12).'"';
 }
 
 
 function printError($message) {
-		get_header();
-		?>
-		<div class="container">
-			<h1><?php the_title();?></h1>
-			<h3><?php echo $message; ?></h3>
-		</div>
+	get_header();
+	?>
+	<div class="container">
+		<h1><?php the_title();?></h1>
+		<h3><?php echo $message; ?></h3>
+	</div>
 	<?php
 	get_footer();
 }
@@ -25,9 +25,9 @@ $modelDetails = array();
 
 // Collect information about our model
 $query = new WP_Query(array(
-		'post_type' => 'models',
-		'models' => $wp_query->query_vars['model_id'],
-		'name' => $wp_query->query_vars['model_id']
+	'post_type' => 'models',
+	'models' => $wp_query->query_vars['model_id'],
+	'name' => $wp_query->query_vars['model_id']
 ));
 if($query->have_posts()) {
 	while ($query->have_posts()) {

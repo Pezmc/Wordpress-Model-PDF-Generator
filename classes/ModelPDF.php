@@ -33,7 +33,7 @@ abstract class ModelPDF {
 	}
 	
 	protected function getGrid($type) {
-			return new $type($this->imagesInX, $this->imagesInY, $this->pageWidthLessMargins(), $this->pageHeightLessMargins());
+		return new $type($this->imagesInX, $this->imagesInY, $this->pageWidthLessMargins(), $this->pageHeightLessMargins());
 	}
 	
 	public function addImage($imagePath) {
@@ -61,7 +61,6 @@ abstract class ModelPDF {
 	public function output($filename = 'example.pdf', $destination = 'I') {
 		
 		$this->drawImages();
-		
 		$this->drawFooter();
 		
 		return $this->pdf->Output($filename, $destination);
@@ -99,7 +98,10 @@ abstract class ModelPDF {
 		$pageWidth = $this->pdf->getPageWidth();
 		$rightMargin = $this->pdf->getMargins()['right'];
 		
-		$this->pdf->Image($this->footerImage, $x=$leftMargin, $y=$pageHeight - $bottomMargin - $footerHeight + 2, $w=0, $h=$footerHeight - 3, $type='', $link='', $align='', $resize=true, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
+		$x = $leftMargin;
+		$y = $pageHeight - $bottomMargin - $footerHeight + 2;
+		$h = $footerHeight - 3;
+		$this->pdf->Image($this->footerImage, $x, $y, $w=0, $h, $type='', $link='', $align='', $resize=true, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false, $alt=false, $altimgs=array());
 		
 		$this->pdf->SetXY($leftMargin - 0.75, $pageHeight - $bottomMargin);
 		$this->pdf->Write($h=0, $this->footerAddress);
