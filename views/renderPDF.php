@@ -94,7 +94,5 @@ if(empty($images)) {
 	// Render away - this is where you set your custom template generator
 	$pdf = new MyModelPDF($modelName, implode(' | ', $modelDetails), $pdfStyle);
 	$pdf->addImages($images);
-	//$pdf->output(__DIR__ . '/output.pdf', 'I');
+	$pdf->output(__DIR__ . '/output.pdf', 'I');
 }
-
-var_dump($images);
