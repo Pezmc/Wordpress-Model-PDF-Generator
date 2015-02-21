@@ -38,15 +38,19 @@ $query = new WP_Query(array(
 if($query->have_posts()) {
 	while ($query->have_posts()) {
 		$query->the_post();
+		
+		// Post title is the models name
 		$modelName = get_the_title();
 	
+    // Grab an array of images for the post
 		while(have_rows('model_image')) {
 			the_row(); 
 			$image = get_sub_field('image');
 			
-			$images[] = plugins_url('vendor/timthumb.php?src=$image&h=1480&w=1200', MPDF_BASE) // use timthumb to adjust the aspect ratio
+			$images[] = plugins_url('vendor/timthumb.php', dirname(__FILE__)) . '?src=' . $image . '&h=1480&w=1200'; // use timthumb to adjust the aspect ratio of the images
 		}
 		
+		// Grab additional fields from the post
 		if(get_field('height')) {
 				$modelDetails['Height'] = cmInFeetAndInches(get_field('height')) . '/' . ceil(get_field('height')) . 'cm';
 		}
@@ -90,5 +94,7 @@ if(empty($images)) {
 	// Render away - this is where you set your custom template generator
 	$pdf = new MyModelPDF($modelName, implode(' | ', $modelDetails), $pdfStyle);
 	$pdf->addImages($images);
-	$pdf->output(__DIR__ . '/output.pdf', 'I');
+	//$pdf->output(__DIR__ . '/output.pdf', 'I');
 }
+
+var_dump($images);
